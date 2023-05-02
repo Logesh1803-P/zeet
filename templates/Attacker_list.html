@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title></title>
+ <!-- Required meta tags -->
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+ <!-- Bootstrap CSS -->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style> 
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        table th,
+        table td {
+        width: 5%;
+        }
+
+          table {
+            margin: 50px auto;
+            padding: 20px;
+            width: 50%;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-right: 20%;
+            margin-bottom: 20%;
+            margin-left: 20%;
+          }
+          
+      
+        tr {
+          font-size: 75%; /* reduce font size */
+
+        }
+        body {
+            background-color: #f8f9fa;
+          }
+         
+          .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+          }
+          
+          .footer ul {
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+          }
+          
+          .footer li {
+            list-style: none;
+            margin: 0 10px;
+          }
+          
+          .footer a {
+            color: #fff;
+          }
+          
+          .footer a:hover {
+            color: #ccc;
+          }
+          body {
+            background-image: url('https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg?cs=srgb&dl=pexels-rovenimagescom-949587.jpg&fm=jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+          }
+          
+           
+          
+      
+</style>
+</head>
+<body >
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Blocked Hackers</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href=dash>Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#contact">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#footer">Contact Us</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    
+      <table class="table table-bordered ">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>username</th>
+            <th>password</th>
+            <th>xss_attack_username</th>
+            <th>xss_attack_password</th>
+            <th>MAC_Address</th>
+            <th>status</th>
+            <th>Time_stamp</th>
+          </tr>
+        </thead>    
+        <tbody>
+          {% for row in data %}    
+            <tr>
+              <td>{{row[0]}}</td>
+              <td>{{row[1]}}</td>
+              <td>{{row[2]}}</td>
+              <td>{{row[3]}}</td>
+              <td>{{row[4]}}</td>
+              <td>{{row[5]}}</td>
+              <td style="color: {{ 'red' if row[6] == 'Blocked' else 'green' }}">{{row[6]}}</td>
+              <td>{{row[7]}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+   
+  </div>
+</div>
+
+<div style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
+  <a href="{{ url_for('download_csv') }}" download>
+    <button class="btn btn-primary btn-dark">Download CSV</button>
+  </a>
+</div>
+
+<div class="footer" id="footer">
+    <ul class="list-unstyled">
+      <li><a href="#"><i class="fab fa-facebook-f fa-lg"></i></a></li>
+      <li id="contact"><a href="#"><i class="fas fa-envelope fa-lg"></i></a></li>
+      <li><a href="#"><i class="fab fa-instagram fa-lg"></i></a></li>
+    </ul>
+  </div>
+  
+  

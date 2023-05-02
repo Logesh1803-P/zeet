@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>XSS Detection Dashboard</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  
+  
+  <!-- Custom CSS -->
+  <style>
+    /* Style for the slideshow container */
+    .slideshow-container  {
+      position: relative;
+      margin: auto;
+      width: 100%;
+      
+      max-width: 800px;
+    }
+    
+
+    /* Style for the slideshow images */
+    .slideshow-container img {
+      width: 100%;
+      height: 100%;
+
+    }
+
+    /* Style for the slideshow dots */
+    .dot-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin: 0 5px;
+      border-radius: 50%;
+      background-color: #bbb;
+      transition: background-color 0.5s ease;
+      cursor: pointer;
+    }
+
+    .active-dot {
+      background-color: #717171;
+    }
+    
+        .prev {
+          left: 10%;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      
+        .next {
+          right: 10%;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      
+        .prev-left {
+          position: absolute;
+        }
+        .prev, .next {
+            font-size: 32px;
+            color: #e4e446;
+          }
+          
+          
+          .prev:hover, .next:hover {
+            color: #ccc;
+          }
+        .next-right {
+          position: absolute;
+        }
+        .middle-container {
+            padding: 50px;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+          }
+          .slideshow-container {
+            height: 400px; /* set a fixed height for the container */
+            position: relative;
+          }
+          .mySlides {
+            height: 100%; /* set the height of each slide to 100% of the container height */
+            background-size: cover; /* scale the background image to cover the entire slide */
+            background-repeat: no-repeat; /* do not repeat the background image */
+            background-position: center; /* center the background image */
+          }
+          .logo {
+            background-image: transparent;
+            opacity: 0.8;
+          }
+          
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- <a class="navbar-brand" href="#">XSS Detection</a> -->
+    <a class="navbar-brand" href="#">
+        <img src="https://arrow.apache.org/img/arrow-logo_chevrons_white-txt_black-bg.png" alt="your-logo" width="30" height="30" class="d-inline-block align-text-top logo">
+        XSS Detection
+      </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('index') }}">Login</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Middle Container -->
+  <div class="middle-container" style="background-image: url('https://s3-us-east-2.amazonaws.com/maryville/wp-content/uploads/2020/06/25164721/MVU-BSCS-1-Network-Security-Key-infographic-research_header_v3.png');">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="slideshow-container">
+          <div class="mySlides">
+            <img src="https://s3.eu-west-2.amazonaws.com/uploads.3alampro.com/2018/September/nueDOuXLvDjaPMHEKwvaWRcG7rhEwqBT1T4NW5hr.png">
+          </div>
+          <div class="mySlides">
+            <img src='https://assets.website-files.com/5ff66329429d880392f6cba2/60b35d7657e59b65ec41e8b0_Reflected%20XSS%20attacks.png'>
+          </div>
+          <div class="mySlides">
+            <img src="https://assets.website-files.com/5ff66329429d880392f6cba2/60b35d9d49c3ceace71aa233_DOM%20(Document%20Object%20Model)%20based%20XSS%20attacks.png">
+          </div>
+        
+          <a class="prev prev-left" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next next-right" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+        <div class="dot-container">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-12 text-center">
+      <a href=Attacker_list class="btn btn-primary btn-dark">Attacker History</a>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer class="bg-dark text-white py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h4>About Us</h4>
+          <p>We are a final year student at UCEV.
+             This web app is build by Logesh and Krishna.
+          </p>
+        
+        </div>
+        <div class="col-md-4">
+          <h4 id="contact" href="#">Contact Us</h4>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-map-marker-alt"></i> 188 Bank St, Cud IND</li>
+            <li><i class="fas fa-phone"></i> (+91) 8124-0092-61</li>
+            <li><i class="fas fa-envelope"></i> logesh.ucev@gmail.com</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h4>Follow Us</h4>
+          <ul class="list-unstyled">
+            <li><a href="#"><i class="fab fa-facebook-f fa-lg"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter fa-lg"></i></a></li>
+            <li><a href="#"><i class="fab fa-instagram fa-lg"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+<!-- Custom JS for slideshow -->
+<script>
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active-dot", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active-dot";
+  }
+  // Get the document object
+const doc = document.documentElement;
+
+// Add a "keydown" event listener to the document
+doc.addEventListener("keydown", function(event) {
+  // Check if the key pressed is the left arrow key (key code 37)
+  if (event.keyCode === 37) {
+    // If the left arrow key is pressed, call the plusSlides function with -1 as the argument to go to the previous slide
+    plusSlides(-1);
+  }
+  // Check if the key pressed is the right arrow key (key code 39)
+  else if (event.keyCode === 39) {
+    // If the right arrow key is pressed, call the plusSlides function with 1 as the argument to go to the next slide
+    plusSlides(1);
+  }
+});
+</script>
+
+
+
+</body>
+</html>
